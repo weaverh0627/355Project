@@ -56,7 +56,7 @@ int main()
         cout << "Enter The Profile Name" << endl;
         cin >> profileName;
         cout << "You inputed " + profileName << endl;
-        cout << "Enter the Account ID";
+        cout << "Enter the Account ID " << endl;
         cin >> acctID;       
         
         prep_stmt = con->prepareStatement("INSERT INTO Profile (Name,AcctID) VALUES (?,?)");
@@ -77,44 +77,14 @@ int main()
     }
 
     else if (actionType == "U" || actionType == "u") {
-
-
-        //string columnName, updatedVal; 
-        //int userColumnChoice, mid;
-        //cout << "Enter the movie id to update ";
-        //cin >> mid; 
-        //cout << "Enter a column to update ";
-        //cin >> userColumnChoice;
-        //cout << "Enter what to set the value to for the column you entered ";
-        //cin.ignore();
-        //getline(cin, updatedVal);
-        
-        /*
-        switch (userColumnChoice) {
-            case 1:
-                columnName = "Name";
-                break;
-            case 2:
-                columnName = "YearReleased";
-                break;
-            case 3:
-                columnName = "Runtime";
-                break;
-            case 4:
-                columnName = "Description";
-                break; 
-            default: 
-                cout << "You didn't chose a valid column" << endl;   
-                break;        
-        } */
         
         string columnName;
         columnName = "Name";
-        cout << "Enter an integer that is the new value for Name ";
+        cout << "Enter a new value for Name ";
         string updatedVal;
         cin >> updatedVal;
         int userProfileid;
-        cout << "Enter the id number of the Movie you would like to update ";
+        cout << "Enter the id number of the Profile you would like to update ";
         cin >> userProfileid;
 
         prep_stmt = con->prepareStatement("UPDATE Profile SET " + columnName + " = ? WHERE id = ?");
@@ -128,6 +98,7 @@ int main()
 
     else if (actionType == "D" || actionType == "d") {
         //DELETE FROM table_name WHERE condition;
+        cout << "Enter the id of the Profile you'd like to delete " << endl;
         int profileToDelete;
         cin >> profileToDelete;
 

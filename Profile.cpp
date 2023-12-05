@@ -52,15 +52,14 @@ int main()
     if (actionType == "C" || actionType == "c" ) {
 
         string profileName;
-        int acctID, profileID;
+        int acctID;
         cout << "Enter The Profile Name" << endl;
-        cin.ignore();
-        getline(cin, profileName);
+        cin >> profileName;
         cout << "You inputed " + profileName << endl;
         cout << "Enter the Account ID";
         cin >> acctID;       
         
-        prep_stmt = con->prepareStatement("INSERT INTO Profile (ProfileName,AcctID) VALUES ('?',?)");
+        prep_stmt = con->prepareStatement("INSERT INTO Profile (Name,AcctID) VALUES (?,?)");
         prep_stmt->setString(1,profileName);
         prep_stmt->setInt(2,acctID);
         prep_stmt->execute();
@@ -110,16 +109,17 @@ int main()
         } */
         
         string columnName;
-        columnName = "PercentComplete";
-        cout << "Enter an integer that is the new value for PercentComplete ";
-        int updatedVal;
+        columnName = "Name";
+        cout << "Enter an integer that is the new value for Name ";
+        string updatedVal;
         cin >> updatedVal;
-        //cout << "Enter the id number of the Movie you would like to update ";
-        //cin >> userMovieName;
+        int userProfileid;
+        cout << "Enter the id number of the Movie you would like to update ";
+        cin >> userProfileid;
 
-        prep_stmt = con->prepareStatement("UPDATE Profile SET " + columnName + " = ? WHERE Acctid = 1");
-        prep_stmt->setInt(1,updatedVal);
-        //prep_stmt->setInt(2,userMovieName);
+        prep_stmt = con->prepareStatement("UPDATE Profile SET " + columnName + " = ? WHERE id = ?");
+        prep_stmt->setString(1,updatedVal);
+        prep_stmt->setInt(2,userProfileid);
         prep_stmt->execute();
 
         delete prep_stmt; 

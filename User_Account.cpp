@@ -51,39 +51,33 @@ int main()
 
     if (actionType == "C" || actionType == "c" ) {
 
-        /* string movieName, description;
-        int yearReleased, runtime;
-        cout << "Enter The Movie Name " << endl;
-        cin.ignore();
-        getline(cin, movieName);
-        cout << "You inputed " + movieName << endl;
-        cout << "Enter The Year Released ";
-        cin >> yearReleased;
-        cout << "Enter the runtime of the movie " << endl;  
-        cin >> runtime;
-        cout << "Enter a description " << endl;  
-        cin.ignore();      
-        getline(cin, description); */
 
-        string email, fname, lname, addr, city, state;
-        int phone, zip;  
+        string email, fname, lname, addr, city, state, phone;
+        int zip;  
 
-        cout << "Enter email, firstname, lastname, street address, city, then state " << endl; 
+        cout << "Enter email " << endl; 
         cin >> email;
-        cin >> fname;
+        cout << "Enter firstname " << endl;
+        cin >> fname; 
+        cout << "Enter lastname " << endl;
         cin >> lname;
+        cout << "Enter street address " << endl;
         cin.ignore();
         getline(cin, addr);
+        cout << "Enter city " << endl;
         getline(cin, city);
+        cout << "Enter state " << endl;
         getline(cin, state);
-        cout << "Now enter the phone and zip " << endl; 
-        cin >> phone >> zip;
+        cout << "Now enter the phone " << endl; 
+        cin >> phone; 
+        cout << "Enter the zipcode " << endl; 
+        cin >> zip;
     
         prep_stmt = con->prepareStatement("INSERT INTO User_Account (Fname,Lname,Email,Phone,StreetAddress,City,State,ZipCode) VALUES (?,?,?,?,?,?,?,?)");
         prep_stmt->setString(1,fname);
         prep_stmt->setString(2,lname);
         prep_stmt->setString(3,email);
-        prep_stmt->setInt(4,phone);
+        prep_stmt->setString(4,phone);
         prep_stmt->setString(5,addr);
         prep_stmt->setString(6,city);
         prep_stmt->setString(7,state);
@@ -103,36 +97,6 @@ int main()
     }
 
     else if (actionType == "U" || actionType == "u") {
-
-
-        //string columnName, updatedVal; 
-        //int userColumnChoice, mid;
-        //cout << "Enter the movie id to update ";
-        //cin >> mid; 
-        //cout << "Enter a column to update ";
-        //cin >> userColumnChoice;
-        //cout << "Enter what to set the value to for the column you entered ";
-        //cin.ignore();
-        //getline(cin, updatedVal);
-        
-        /*
-        switch (userColumnChoice) {
-            case 1:
-                columnName = "Name";
-                break;
-            case 2:
-                columnName = "YearReleased";
-                break;
-            case 3:
-                columnName = "Runtime";
-                break;
-            case 4:
-                columnName = "Description";
-                break; 
-            default: 
-                cout << "You didn't chose a valid column" << endl;   
-                break;        
-        } */
         
         string columnName;
         columnName = "Email";
@@ -154,6 +118,7 @@ int main()
 
     else if (actionType == "D" || actionType == "d") {
         //DELETE FROM table_name WHERE condition;
+        cout << "Enter the User_Account id of the account you would like to delete " << endl;
         int userCondition;
         cin >> userCondition;
 

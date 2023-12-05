@@ -54,7 +54,7 @@ int main()
         int movieID, profileID, pctComp;
         cout << "Enter movie ID ";
         cin >> movieID;
-        cout << "Enter the profile ID " << endl;  
+        cout << "Enter the profile ID ";  
         cin >> profileID;
         cout << "Enter the percent complete " << endl;  
         cin >> pctComp;
@@ -78,46 +78,16 @@ int main()
     }
 
     else if (actionType == "U" || actionType == "u") {
-
-
-        //string columnName, updatedVal; 
-        //int userColumnChoice, mid;
-        //cout << "Enter the movie id to update ";
-        //cin >> mid; 
-        //cout << "Enter a column to update ";
-        //cin >> userColumnChoice;
-        //cout << "Enter what to set the value to for the column you entered ";
-        //cin.ignore();
-        //getline(cin, updatedVal);
-        
-        /*
-        switch (userColumnChoice) {
-            case 1:
-                columnName = "Name";
-                break;
-            case 2:
-                columnName = "YearReleased";
-                break;
-            case 3:
-                columnName = "Runtime";
-                break;
-            case 4:
-                columnName = "Description";
-                break; 
-            default: 
-                cout << "You didn't chose a valid column" << endl;   
-                break;        
-        } */
         
         string columnName;
         columnName = "PercentComplete";
         cout << "Enter an integer that is the new value for PercentComplete ";
         int updatedVal, movieID, profileID;
         cin >> updatedVal;
-        cout << "Enter the id number of the Profile watching the movie ";
-        cin >> profileID;
         cout << "Enter the id number of the Movie ";
         cin >> movieID;
+        cout << "Enter the id number of the Profile watching the movie ";
+        cin >> profileID;
 
         prep_stmt = con->prepareStatement("UPDATE Views_Movie SET " + columnName + " = ? WHERE ProfileID = ? AND MovieID = ?");
         prep_stmt->setInt(1,updatedVal);
